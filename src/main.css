@@ -440,7 +440,7 @@ canvas {
   height: 35px;
 }
 
-.Back {
+/* .Back {
   grid-column: 3;
   order: 3;
   flex-direction: column;
@@ -449,10 +449,20 @@ canvas {
   align-content: center;
   align-items: stretch;
   justify-content: flex-end;
-}
+} */
+
 .Colors {
   user-select: auto;
   display: flex;
+}
+
+.startOrQuitBtns {
+  display: flex;
+  flex-direction: row;
+}
+
+.Back {
+  margin-left: 10px;
 }
 
 /*Colors********************************************************************/

@@ -6,6 +6,7 @@ import Answer from './components/Answer';
 import BackBtn from './components/BackBtn';
 import Result from './components/Result';
 import SelectWords from './components/SelectWords';
+import GameStartBtn from './components/GameStartBtn';
 
 export default function InGame() {
   const [IsReady, SetIsReady] = useState(false);
@@ -51,7 +52,10 @@ export default function InGame() {
             </div>
             <Answer />
             <User />
-            <BackBtn />
+            <div className="startOrQuitBtns">
+              <GameStartBtn />
+              <BackBtn />
+            </div>
           </div>
         </>
       ) : (
