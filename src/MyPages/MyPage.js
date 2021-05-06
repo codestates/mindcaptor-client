@@ -57,6 +57,33 @@ function MyPage({ accessToken, refreshTokenRequest, userInfo }) {
     console.log('photobox', isPhotoBoxOpen);
   };
 
+<<<<<<< HEAD
+  const MyPageSaveData = async (PhotoNum) => {
+    refreshTokenRequest();
+    const SavePhoto = await axios.post(
+      `http://localhost:4000/mypage/${id}/profile`,
+      { new_profile: PhotoNum },
+      {
+        headers: {
+          Authorization: `Bearer ${accessToken.accessToken}`,
+          'Content-Type': 'application/json',
+        },
+        withCredentials: true,
+      }
+    );
+    const SaveComment = await axios.post(
+      `http://localhost:4000/mypage/${id}/comment`,
+      { Comment: '아니라어민어리ㅏㅁㄴ얼' },
+      {
+        headers: {
+          Authorization: `Bearer ${accessToken.accessToken}`,
+          'Content-Type': 'application/json',
+        },
+        withCredentials: true,
+      }
+    );
+  };
+=======
   // const MyPageSaveData = async (PhotoNum) => {
   //   await refreshTokenRequest();
   //   const SavePhoto = await axios.post(
@@ -82,6 +109,7 @@ function MyPage({ accessToken, refreshTokenRequest, userInfo }) {
   //     }
   //   );
   // };
+>>>>>>> a5771eaba281de9abd8e0bf97642c16df821de90
 
   return (
     <div>
@@ -90,7 +118,11 @@ function MyPage({ accessToken, refreshTokenRequest, userInfo }) {
         nowPhoto={nowPhoto}
         nickname={nickname}
         PhotoNum={PhotoNum}
+<<<<<<< HEAD
+        MyPageSaveData={MyPageSaveData}
+=======
         // MyPageSaveData={MyPageSaveData}
+>>>>>>> a5771eaba281de9abd8e0bf97642c16df821de90
       />
       <content className="container">
         <div className="pro_search_box">

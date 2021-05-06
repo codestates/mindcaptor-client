@@ -24,6 +24,7 @@ export default function InGame({ accessToken, isLogIn, loginCheck, userInfo }) {
   const [isPresenter, setIsPresenter] = useState(false);
   const [winner, setWinner] = useState([]);
   const [userlist, setUserlist] = useState([]);
+  const [inputPresenter, setInputPresenter] = useState(false);
 
   //뒤로가기 버튼 방지
   const [locationKeys, setLocationKeys] = useState([]);
@@ -116,7 +117,26 @@ export default function InGame({ accessToken, isLogIn, loginCheck, userInfo }) {
     socket.emit('set answer', { answer });
   };
 
+  const endGame = () => {
+    setResultPopup(true);
+    setInputPresenter(false);
+  };
+
   //! --------------------------method--------------------------
+  useEffect(() => {
+    const localUserInfo = JSON.parse(localStorage.getItem('userInfo'));
+    console.log('정답', localUserInfo.nickname);
+    console.log('출제자', presenter, presenter.nickname);
+
+    if (presenter.nickname === localUserInfo.nickname) {
+      setInputPresenter(true);
+      console.log('너가출제자123213', localUserInfo.nickname);
+    }
+  });
+
+  useEffect(() => {
+    console.log('inputPresenter:내가발표자');
+  }, [inputPresenter]);
 
   
 
@@ -153,7 +173,6 @@ export default function InGame({ accessToken, isLogIn, loginCheck, userInfo }) {
 
 
     socket.on('renew userlist', (list) => {
-      console.log('d우ㅠ저소ㅓ켓');
       setUserlist([...list]);
     });
   }, []);
@@ -203,7 +222,12 @@ export default function InGame({ accessToken, isLogIn, loginCheck, userInfo }) {
             {resultPopup ? <Result winner={winner} /> : null}
           </div>
         </div>
-        <User users={userlist} userInfo={userInfo} />
+        <User
+          className="inGame"
+          users={userlist}
+          userInfo={userInfo}
+          inputPresenter={inputPresenter}
+        />
         <div className="chatBix">
           <Timer
             minutes={minutes}
