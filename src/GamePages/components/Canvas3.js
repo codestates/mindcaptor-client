@@ -8,6 +8,7 @@ import Crayon_Blue from '../../images/crayon_blue.png';
 import Crayon_Green from '../../images/crayon_green.png';
 import Crayon_Yellow from '../../images/crayon_yellow.png';
 import io from 'socket.io-client';
+require('dotenv').config();
 
 export default function Canvas3() {
   const canvasRef = useRef(null);
@@ -121,7 +122,7 @@ export default function Canvas3() {
       drawLine(data.x0 * w, data.y0 * h, data.x1 * w, data.y1 * h, data.color);
     };
 
-    socketRef.current = io.connect('http://localhost:4000', {
+    socketRef.current = io.connect(`${process.env.SERVER}`, {
       transports: ['websocket', 'polling'],
       path: '/socket.io',
     });

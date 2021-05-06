@@ -11,7 +11,8 @@ import Words from '../Words';
 import { useHistory } from 'react-router-dom';
 import Logo from './components/Logo';
 import Canvas from './components/Canvas3';
-const socket = io.connect('ec2-3-139-101-167.us-east-2.compute.amazonaws.com', {
+require('dotenv').config();
+const socket = io.connect(`${process.env.SERVER}`, {
   transports: ['websocket'],
   path: '/socket.io',
 });

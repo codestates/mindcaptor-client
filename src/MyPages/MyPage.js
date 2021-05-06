@@ -9,6 +9,7 @@ import Character1 from '../images/Character1.png';
 import Character2 from '../images/Character2.png';
 import Character3 from '../images/Character3.png';
 import Character4 from '../images/Character4.png';
+require('dotenv').config();
 
 function MyPage({ accessToken, refreshTokenRequest, userInfo }) {
   const PhotoData = [Character1, Character2, Character3, Character4];
@@ -61,7 +62,7 @@ function MyPage({ accessToken, refreshTokenRequest, userInfo }) {
   const MyPageSaveData= async (PhotoNum) =>{
 
     await refreshTokenRequest()
-    const SavePhoto = await axios.post(`ec2-3-139-101-167.us-east-2.compute.amazonaws.com/mypage/${id}/profile`,
+    const SavePhoto = await axios.post(`${process.env.SERVER}/mypage/${id}/profile`,
     {new_profile: PhotoNum},
     {
       headers: {
@@ -70,7 +71,7 @@ function MyPage({ accessToken, refreshTokenRequest, userInfo }) {
       },
       //withCredentials: true,
     })
-    const SaveComment = await axios.post(`ec2-3-139-101-167.us-east-2.compute.amazonaws.com/mypage/${id}/comment`,
+    const SaveComment = await axios.post(`${process.env.SERVER}/${id}/comment`,
     {Comment: '아니라어민어리ㅏㅁㄴ얼'},
     {
       headers: {

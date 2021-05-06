@@ -3,6 +3,7 @@ import '../../main.css';
 import logo from '../../images/mindcaptor_logo_login.png';
 import { useHistory } from 'react-router-dom';
 import SocialLogin from './SocialLogin';
+require('dotenv').config();
 
 const axios = require('axios');
 
@@ -24,7 +25,7 @@ export default function Signin({ isOpen, close, loginHandler }) {
     if (e.key === 'Enter' || e.type === 'click') {
       axios
         .post(
-          'ec2-3-139-101-167.us-east-2.compute.amazonaws.com/login',
+          `${process.env.SERVER}/login`,
           { email, password },
           {
             headers: { 'Content-Type': 'application/json' },

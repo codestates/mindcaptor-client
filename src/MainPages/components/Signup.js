@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import '../../main.css';
 import logo from '../../images/mindcaptor_logo_sign.png';
 const axios = require('axios');
-
+require('dotenv').config();
 export default function Signup({ isOpen, close, idCreatedOk }) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -26,7 +26,7 @@ export default function Signup({ isOpen, close, idCreatedOk }) {
     if (e.key === 'Enter' || e.type === 'click') {
       try {
         const data = await axios.post(
-          'ec2-3-139-101-167.us-east-2.compute.amazonaws.com/signup',
+          `${process.env.SERVER}`,
           { email, password, nickname },
           {
             headers: { 'Content-Type': 'application/json' },

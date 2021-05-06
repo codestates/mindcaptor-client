@@ -8,6 +8,7 @@ import Character1 from './images/Character1.png';
 import { useHistory } from 'react-router-dom';
 import './main.css';
 import Bgm from './Bgm';
+require('dotenv').config();
 
 const axios = require('axios');
 
@@ -48,7 +49,7 @@ export default function App() {
     axios
 
         .get(
-          'ec2-3-139-101-167.us-east-2.compute.amazonaws.com/user/logout',
+          `${process.env.SERVER}/user/logout`,
           {withCredentials: true}
         ).then((res) => {})
     setUserInfo({
@@ -67,7 +68,7 @@ export default function App() {
   const accessTokenRequest = (accessToken) => {
     // ! 유저 정보를 알려달라는 코드
     axios
-      .get('ec2-3-139-101-167.us-east-2.compute.amazonaws.com/accessTokenHandler', {
+      .get(`${process.env.SERVER}/accessTokenHandler`, {
         headers: {
           Authorization: `Bearer ${accessToken}`,
           'Content-Type': 'application/json',
@@ -88,9 +89,9 @@ export default function App() {
   };
 
   const refreshTokenRequest = () => {
-    // ! 일정 주기로 함수 계속 보냄
+    // ! 일정 주기로 함수 계속 보냄http://ec2-3-139-101-167.us-east-2.compute.amazonaws.com:80
     axios
-      .get('ec2-3-139-101-167.us-east-2.compute.amazonaws.com/refreshTokenHandler', {
+      .get(`${process.env.SERVER}/refreshTokenHandler`, {
         withCredentials: true,
       })
       .then((res) => {
@@ -121,7 +122,7 @@ export default function App() {
   const getAccessToken = async (authorizationCode) => {
     // ! 구글 로그인
     let resp = await axios.post(
-      'ec2-3-139-101-167.us-east-2.compute.amazonaws.com/googlelogin',
+      `${process.env.SERVER}/googlelogin`,
       {
         authorizationCode: authorizationCode,
       },
