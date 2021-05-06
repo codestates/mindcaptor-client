@@ -1,7 +1,7 @@
 import React, { useRef, useEffect } from 'react';
 import io from 'socket.io-client';
 // import './styles/board.css';
-
+require('dotenv').config();
 export default function Canvas() {
   const canvasRef = useRef(null);
   const colorsRef = useRef(null);
@@ -151,7 +151,7 @@ export default function Canvas() {
       drawLine(data.x0 * w, data.y0 * h, data.x1 * w, data.y1 * h, data.color);
     };
 
-    socketRef.current = io.connect('http://localhost:4000', {
+    socketRef.current = io.connect(`${process.env.SERVER}`, {
       transports: ['websocket', 'polling'],
       path: '/socket.io',
     });

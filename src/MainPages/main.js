@@ -6,6 +6,7 @@ import SigninBtn from './components/SigninBtn';
 import SignupBtn from './components/SignupBtn';
 import Popup from 'reactjs-popup';
 import 'reactjs-popup/dist/index.css';
+require('dotenv').config();
 
 const axios = require('axios');
 
@@ -23,7 +24,7 @@ export default function Main({ loginHandler, handleGuestLogin }) {
 
   const guestLogIn = () => {
     axios
-      .get('http://localhost:4000/guest',
+      .get(`${process.env.SERVER}/guest`,
       {
         withCredentials: true
       })

@@ -8,6 +8,7 @@ import Character1 from './images/Character1.png';
 import { useHistory } from 'react-router-dom';
 import './main.css';
 import Bgm from './Bgm';
+require('dotenv').config();
 
 const axios = require('axios');
 
@@ -46,8 +47,10 @@ export default function App() {
   const hendleLogout = () => {
     axios
 
-      .get('http://localhost:4000/user/logout', { withCredentials: true })
-      .then((res) => {});
+        .get(
+          `${process.env.SERVER}/user/logout`,
+          {withCredentials: true}
+        ).then((res) => {})
     setUserInfo({
       id: null,
       nickname: null,
@@ -64,7 +67,7 @@ export default function App() {
   const accessTokenRequest = (accessToken) => {
     // ! 유저 정보를 알려달라는 코드
     axios
-      .get('http://localhost:4000/accessTokenHandler', {
+      .get(`${process.env.SERVER}/accessTokenHandler`, {
         headers: {
           Authorization: `Bearer ${accessToken}`,
           'Content-Type': 'application/json',
@@ -72,10 +75,7 @@ export default function App() {
         withCredentials: true,
       })
       .then((res) => {
-<<<<<<< HEAD
-=======
         const { nickname, email, profile_image, comment, id } = res.data.data;
->>>>>>> a5771eaba281de9abd8e0bf97642c16df821de90
         // !
         return res.data.data;
       })
@@ -99,9 +99,9 @@ export default function App() {
   }, [userInfo]);
 
   const refreshTokenRequest = () => {
-    // ! 일정 주기로 함수 계속 보냄
+    // ! 일정 주기로 함수 계속 보냄http://ec2-3-139-101-167.us-east-2.compute.amazonaws.com:80
     axios
-      .get('http://localhost:4000/refreshTokenHandler', {
+      .get(`${process.env.SERVER}/refreshTokenHandler`, {
         withCredentials: true,
       })
       .then((res) => {
@@ -115,16 +115,7 @@ export default function App() {
           comment,
         } = res.data.data.userInfo;
 
-<<<<<<< HEAD
         setAccessToken({ accessToken: res.data.data.accessToken });
-=======
-
-        if (res.data.message !== 'ok') {}
-        const { nickname, email, profile_image, id,comment } = res.data.data.userInfo;
-        console.log(res.data.data.accessToken)
-        setAccessToken({accessToken:res.data.data.accessToken})
-
->>>>>>> a5771eaba281de9abd8e0bf97642c16df821de90
         setUserInfo({
           id: id,
           nickname: nickname,
@@ -145,7 +136,7 @@ export default function App() {
   const getAccessToken = async (authorizationCode) => {
     // ! 구글 로그인
     let resp = await axios.post(
-      'http://localhost:4000/googlelogin',
+      `${process.env.SERVER}/googlelogin`,
       {
         authorizationCode: authorizationCode,
       },
@@ -153,21 +144,12 @@ export default function App() {
         withCredentials: true,
       }
     );
-<<<<<<< HEAD
-
-=======
->>>>>>> a5771eaba281de9abd8e0bf97642c16df821de90
     issueAccessToken(resp.data.accessToken);
   };
   //구글 로그인 코드 받기--------------------------------
   useEffect(() => {
     const url = new URL(window.location.href);
     const authorizationCode = url.searchParams.get('code');
-<<<<<<< HEAD
-
-    console.log('userInfo:', userInfo);
-=======
->>>>>>> a5771eaba281de9abd8e0bf97642c16df821de90
     if (authorizationCode) {
       getAccessToken(authorizationCode);
     }
