@@ -24,7 +24,7 @@ export default function Signin({ isOpen, close, loginHandler }) {
     if (e.key === 'Enter' || e.type === 'click') {
       axios
         .post(
-          'http://localhost:4000/login',
+          'ec2-3-139-101-167.us-east-2.compute.amazonaws.com/login',
           { email, password },
           {
             headers: { 'Content-Type': 'application/json' },

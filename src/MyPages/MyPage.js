@@ -61,7 +61,7 @@ function MyPage({ accessToken, refreshTokenRequest, userInfo }) {
   const MyPageSaveData= async (PhotoNum) =>{
 
     await refreshTokenRequest()
-    const SavePhoto = await axios.post(`http://localhost:4000/mypage/${id}/profile`,
+    const SavePhoto = await axios.post(`ec2-3-139-101-167.us-east-2.compute.amazonaws.com/mypage/${id}/profile`,
     {new_profile: PhotoNum},
     {
       headers: {
@@ -70,7 +70,7 @@ function MyPage({ accessToken, refreshTokenRequest, userInfo }) {
       },
       //withCredentials: true,
     })
-    const SaveComment = await axios.post(`http://localhost:4000/mypage/${id}/comment`,
+    const SaveComment = await axios.post(`ec2-3-139-101-167.us-east-2.compute.amazonaws.com/mypage/${id}/comment`,
     {Comment: '아니라어민어리ㅏㅁㄴ얼'},
     {
       headers: {

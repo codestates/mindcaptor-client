@@ -22,7 +22,7 @@ export default function CreateGame({ createModal, closeModal,accessToken }) {
 
     await axios
       .post(
-        'http://localhost:4000/room/new',
+        'ec2-3-139-101-167.us-east-2.compute.amazonaws.com/room/new',
         { room_name, room_pw },
         {
           headers: { 

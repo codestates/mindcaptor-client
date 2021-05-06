@@ -26,7 +26,7 @@ export default function Signup({ isOpen, close, idCreatedOk }) {
     if (e.key === 'Enter' || e.type === 'click') {
       try {
         const data = await axios.post(
-          'http://localhost:4000/signup',
+          'ec2-3-139-101-167.us-east-2.compute.amazonaws.com/signup',
           { email, password, nickname },
           {
             headers: { 'Content-Type': 'application/json' },

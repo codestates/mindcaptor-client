@@ -48,7 +48,7 @@ export default function App() {
     axios
 
         .get(
-          'http://localhost:4000/user/logout',
+          'ec2-3-139-101-167.us-east-2.compute.amazonaws.com/user/logout',
           {withCredentials: true}
         ).then((res) => {})
     setUserInfo({
@@ -67,7 +67,7 @@ export default function App() {
   const accessTokenRequest = (accessToken) => {
     // ! 유저 정보를 알려달라는 코드
     axios
-      .get('http://localhost:4000/accessTokenHandler', {
+      .get('ec2-3-139-101-167.us-east-2.compute.amazonaws.com/accessTokenHandler', {
         headers: {
           Authorization: `Bearer ${accessToken}`,
           'Content-Type': 'application/json',
@@ -92,7 +92,7 @@ export default function App() {
   const refreshTokenRequest = () => {
     // ! 일정 주기로 함수 계속 보냄
     axios
-      .get('http://localhost:4000/refreshTokenHandler', {
+      .get('ec2-3-139-101-167.us-east-2.compute.amazonaws.com/refreshTokenHandler', {
         withCredentials: true,
       })
       .then((res) => {
@@ -122,7 +122,7 @@ export default function App() {
   const getAccessToken = async (authorizationCode) => {
     // ! 구글 로그인
     let resp = await axios.post(
-      'http://localhost:4000/googlelogin',
+      'ec2-3-139-101-167.us-east-2.compute.amazonaws.com/googlelogin',
       {
         authorizationCode: authorizationCode,
       },

@@ -23,7 +23,7 @@ export default function Main({ loginHandler, handleGuestLogin }) {
 
   const guestLogIn = () => {
     axios
-      .get('http://localhost:4000/guest',
+      .get('ec2-3-139-101-167.us-east-2.compute.amazonaws.com/guest',
       {
         withCredentials: true
       })

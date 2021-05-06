@@ -11,7 +11,7 @@ import Words from '../Words';
 import { useHistory } from 'react-router-dom';
 import Logo from './components/Logo';
 import Canvas from './components/Canvas3';
-const socket = io.connect('http://localhost:4000', {
+const socket = io.connect('ec2-3-139-101-167.us-east-2.compute.amazonaws.com', {
   transports: ['websocket'],
   path: '/socket.io',
 });

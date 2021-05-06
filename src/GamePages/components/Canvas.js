@@ -151,7 +151,7 @@ export default function Canvas() {
       drawLine(data.x0 * w, data.y0 * h, data.x1 * w, data.y1 * h, data.color);
     };
 
-    socketRef.current = io.connect('http://localhost:4000', {
+    socketRef.current = io.connect('ec2-3-139-101-167.us-east-2.compute.amazonaws.com', {
       transports: ['websocket', 'polling'],
       path: '/socket.io',
     });

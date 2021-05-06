@@ -7,7 +7,7 @@ function EntryGame({ accessToken }) {
 
   const handleUrl = async () => {
     const result = await axios.post(
-      'http://localhost:4000/room/join',
+      'ec2-3-139-101-167.us-east-2.compute.amazonaws.com/room/join',
       {},
       {
         headers: {
