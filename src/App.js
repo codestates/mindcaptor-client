@@ -28,13 +28,11 @@ export default function App() {
 
   //로그인 상태 관리하기--------------------------------
   useEffect(() => {
-    localStorage.setItem({a:'a'})
-    console.log(localStorage.getItem('a'))
     //refreshTokenRequest()
-    if(accessToken.accessToken!==null){
-      history.push('/Waiting')
-    }      
-  },[]);
+    if (accessToken.accessToken !== null) {
+      history.push('/Waiting');
+    }
+  }, []);
 
   const loginHandler = (data) => {
     issueAccessToken(data.data.accessToken);
@@ -79,6 +77,11 @@ export default function App() {
       .then((res) => {
         const { nickname, email, profile_image, comment, id } = res.data.data;
         // !
+        return res.data.data;
+      })
+      .then((data) => {
+        console.log('여기야야야야양', data);
+        const { nickname, email, profile_image, comment, id } = data;
         setUserInfo({
           id: id,
           nickname: nickname,
@@ -89,6 +92,12 @@ export default function App() {
       });
   };
 
+  useEffect(() => {
+    return () => {
+      localStorage.setItem('userInfo', JSON.stringify(userInfo));
+    };
+  }, [userInfo]);
+
   const refreshTokenRequest = () => {
     // ! 일정 주기로 함수 계속 보냄http://ec2-3-139-101-167.us-east-2.compute.amazonaws.com:80
     axios
@@ -96,18 +105,22 @@ export default function App() {
         withCredentials: true,
       })
       .then((res) => {
+        if (res.data.message !== 'ok') {
+        }
+        const {
+          nickname,
+          email,
+          profile_image,
+          id,
+          comment,
+        } = res.data.data.userInfo;
 
-
-        if (res.data.message !== 'ok') {}
-        const { nickname, email, profile_image, id,comment } = res.data.data.userInfo;
-        console.log(res.data.data.accessToken)
-        setAccessToken({accessToken:res.data.data.accessToken})
-
+        setAccessToken({ accessToken: res.data.data.accessToken });
         setUserInfo({
-          id : id,
+          id: id,
           nickname: nickname,
           email: email,
-          comment:comment,
+          comment: comment,
           profile_image: profile_image,
         });
       });

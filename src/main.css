@@ -478,7 +478,6 @@ $button-active-blue: #1669f2; */
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 50px;
 }
 
 .waiting_btns {
@@ -851,7 +850,7 @@ $button-active-blue: #1669f2; */
 
 .inGameUserProfile {
   display: flex;
-  border: 3px solid #0f4d86;
+  border: 3px solid #e71a1a;
   border-radius: 15px;
   list-style: none;
   width: 300px;
@@ -1054,7 +1053,6 @@ canvas {
 }
 
 .result {
-  border: 2px solid black;
   border-radius: 15px;
   width: 600px;
   height: 500px;
@@ -1191,4 +1189,14 @@ canvas {
   font-size: 20px;
   color: white;
   top: 10%;
+}
+
+.inGame_user {
+  border: 2px solid red;
+}
+.Back {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100px;
 }
