@@ -35,7 +35,7 @@ export default function Chat({ chat, onMessageSubmit, onTextChange, state }) {
       </div>
 
       <form onSubmit={onMessageSubmit}>
-        <input type="text"></input>
+        {/* <input type="text"></input> */}
         <div className="msgBtn">
           <input
             onKeyPress={handleKeyPress}

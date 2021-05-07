@@ -1072,18 +1072,15 @@ canvas {
 }
 
 .res_body {
-  border: 2px solid white;
 }
 
 .res_body_header {
   text-align: center;
   color: white;
-  border: 2px solid red;
   font-size: 20px;
 }
 
 .res_body_winner {
-  border: 2px solid green;
   color: white;
 
   text-align: center;

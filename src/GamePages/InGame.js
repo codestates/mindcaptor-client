@@ -12,7 +12,7 @@ import { useHistory } from 'react-router-dom';
 import Logo from './components/Logo';
 import Canvas from './components/Canvas3';
 require('dotenv').config();
-const socket = io.connect(`${process.env.SERVER}`, {
+const socket = io.connect(`${process.env.REACT_APP_API_SERVER}`, {
   transports: ['websocket'],
   path: '/socket.io',
 });

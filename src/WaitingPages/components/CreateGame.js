@@ -2,6 +2,7 @@ import axios from 'axios';
 import { useHistory } from 'react-router-dom';
 
 import React, { useEffect, useState } from 'react';
+require('dotenv').config()
 
 export default function CreateGame({ createModal, closeModal, accessToken }) {
   const [roomName, setRoomName] = useState('');
@@ -22,7 +23,7 @@ export default function CreateGame({ createModal, closeModal, accessToken }) {
 
     await axios
       .post(
-        'ec2-3-139-101-167.us-east-2.compute.amazonaws.com/room/new',
+        `${process.env.REACT_APP_API_SERVER}/room/new`,
         { room_name, room_pw },
         {
           headers: {

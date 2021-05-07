@@ -25,7 +25,7 @@ export default function Signin({ isOpen, close, loginHandler }) {
     if (e.key === 'Enter' || e.type === 'click') {
       axios
         .post(
-          `${process.env.SERVER}/login`,
+          `${process.env.REACT_APP_API_SERVER}/login`,
           { email, password },
           {
             headers: { 'Content-Type': 'application/json' },
