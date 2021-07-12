@@ -24,7 +24,7 @@ export default function Main({ loginHandler, handleGuestLogin }) {
 
   const guestLogIn = () => {
     axios
-      .get(`${process.env.SERVER}/guest`,
+      .get(`${process.env.REACT_APP_API_SERVER}/guest`,
       {
         withCredentials: true
       })

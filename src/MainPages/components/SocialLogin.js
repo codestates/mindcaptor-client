@@ -2,8 +2,8 @@ import React from 'react';
 
 export default function SocialLogin() {
   const socialLoginHandler = () => {
-    const url = `https://accounts.google.com/o/oauth2/auth?client_id=970331179604-upa291p2st8pmj3676qmnm4geurg21cb.apps.googleusercontent.com&redirect_uri=http://mindcaptor.s3-website.ap-northeast-2.amazonaws.com&response_type=code&scope=https://www.googleapis.com/auth/userinfo.profile email`;
-
+    let redirect_uri = {s3:'http://mindcaptor.s3-website.ap-northeast-2.amazonaws.com',local:'http://localhost:3000'}
+    const url = `https://accounts.google.com/o/oauth2/auth?client_id=970331179604-upa291p2st8pmj3676qmnm4geurg21cb.apps.googleusercontent.com&redirect_uri=${redirect_uri.s3}&response_type=code&scope=https://www.googleapis.com/auth/userinfo.profile email`;
     window.location.assign(url);
   };
   return (

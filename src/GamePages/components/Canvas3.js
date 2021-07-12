@@ -122,7 +122,7 @@ export default function Canvas3() {
       drawLine(data.x0 * w, data.y0 * h, data.x1 * w, data.y1 * h, data.color);
     };
 
-    socketRef.current = io.connect(`${process.env.SERVER}`, {
+    socketRef.current = io.connect(`${process.env.REACT_APP_API_SERVER}`, {
       transports: ['websocket', 'polling'],
       path: '/socket.io',
     });

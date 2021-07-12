@@ -26,7 +26,7 @@ export default function Signup({ isOpen, close, idCreatedOk }) {
     if (e.key === 'Enter' || e.type === 'click') {
       try {
         const data = await axios.post(
-          `${process.env.SERVER}`,
+          `${process.env.REACT_APP_API_SERVER}/signup`,
           { email, password, nickname },
           {
             headers: { 'Content-Type': 'application/json' },

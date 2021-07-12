@@ -1,13 +1,13 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
 import axios from 'axios';
-
+require('dotenv').config()
 function EntryGame({ accessToken }) {
   const history = useHistory();
 
   const handleUrl = async () => {
     const result = await axios.post(
-      'ec2-3-139-101-167.us-east-2.compute.amazonaws.com/room/join',
+      `${process.env.REACT_APP_API_SERVER}/room/join`,
       {},
       {
         headers: {
